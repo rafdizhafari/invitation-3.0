@@ -1,0 +1,2 @@
+class untuk iframe:
+    class='mx-auto border border-white border-2 rounded-sm shadow-sm w-xs md:w-2xl h-72'
