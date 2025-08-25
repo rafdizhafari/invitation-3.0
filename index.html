@@ -6,10 +6,11 @@
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Bree+Serif&family=Charm:wght@400;700&family=Cookie&family=Dancing+Script:wght@400..700&family=Girassol&family=Grand+Hotel&family=Macondo&family=Marcellus&family=Nunito:ital,wght@0,200..1000;1,200..1000&family=Outfit:wght@100..900&family=Rakkas&family=Sacramento&display=swap" rel="stylesheet">
-        <!-- <link rel="stylesheet" type="text/css" href="./Countdown/themes/default.css"> -->
+        <link rel="stylesheet" type="text/css" href="node_modules/simplycountdown.js/dist/themes/default.css">
         <link rel="stylesheet" type="text/css" href="./dist/output.css">
         <!-- <link rel="icon" type="image/png" href="./image/P-removebg-preview.png"> -->
         <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+        <script src="node_modules/simplycountdown.js/dist/simplyCountdown.umd.js"></script>
         <title>Invitation 2</title>
     </head>
     <body class="font-outfit">
@@ -43,8 +44,8 @@
             </div>
         </section>
 
-        <nav class="navbar hidden fixed bottom-20 left-1/2 -translate-x-1/2 z-50">
-            <div class="flex flex-row justify-center mx-auto space-x-5 bg-lime-200 size-fit py-4 px-6 opacity-80 rounded-sm border border-emerald-500">
+        <nav class="navbar fixed bottom-15 left-1/2 -translate-x-1/2 z-50">
+            <div class="flex flex-row justify-center mx-auto space-x-7 bg-teal-50 size-fit py-2 px-4 rounded-sm border border-teal-500">
                 <a href="#home" class="transition hover:translate-y-[-4px]">
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="size-10 lg:size-8 transition hover:translate-y-[-3px]">
                         <path stroke-linecap="round" stroke-linejoin="round" d="m2.25 12 8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h8.25" />
@@ -146,9 +147,96 @@
                         </div>
                     </div>
                 </div>
-                <div id="info-location" class="bg-teal-400 p-6 pb-12 shadow-lg justify-center mx-auto rounded-b-sm w-full"></div>
+                <div id="info-location" class="bg-teal-400 p-6 shadow-lg justify-center mx-auto rounded-b-sm w-full"></div>
             </div>
         </section>
+
+        <section id="countdown" class="countdown">
+            <div class="@container mx-auto p-6 h-auto bg-teal-600 text-center">
+                <div class="bg-teal-400 space-y-4 p-6 rounded-sm shadow-lg">
+                    <p>Akan melangsungkan resepsi pernikahan dalam:</p>
+                    <div id="countdown-place" class="simply-countdown"></div>
+                </div>
+            </div>
+        </section>
+
+        <section id="rsvp" class="rsvp">
+            <div class="@container mx-auto p-6 h-auto bg-teal-600">
+                <div class="bg-teal-400 p-6 mx-auto text-center rounded-sm justify-center text-center shadow-lg space-y-2">
+                    <h1>RSVP</h1>
+                    <div class="bg-teal-200 mx-auto size-fit p-4 space-y-2 rounded-sm shadow-md">
+                        <form class="space-y-2">
+                            <input type="text" id="rsvp-name" name="rsvp-name" class="border-2 p-4 rounded-sm w-full" placeholder="Tulis nama tamu di sini...">
+                            <select name="rsvp-status" id="rsvp-status" class="border-2 p-4 rounded-sm w-full">
+                                <option selected>Pilih salah satu</option>
+                                <option value="1">Hadir</option>
+                                <option value="0">Tidak Hadir</option>
+                            </select>
+                            <button class="px-4 py-2 border rounded-sm shadow-md font-bold">Kirim</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="wish" class="wish">
+            <div class="@container mx-auto p-6 h-auto bg-teal-600">
+                <div class="bg-teal-400 mx-auto rounded-sm justify-center text-center shadow-lg p-6 space-y-2">
+                    <h1>Ucapan & Doa</h1>
+                    <div class="bg-teal-200 p-4 size-fit mx-auto rounded-sm space-y-2">
+                        <div class="mx-auto size-fit p-4 rounded-sm bg-teal-100 shadow-sm">
+                            <form class="space-y-2">
+                                <input class="p-4 w-full border border-2 rounded-sm" autocomplete="off" type="text" placeholder="Tulis nama pengirim di sini...">
+                                <textarea name="" class="border border-2 p-4 w-full rounded-sm min-h-25" placeholder="Tulis pesan anda di sini..."></textarea>
+                                <button type="submit" class="rounded px-4 py-2 shadow-md font-bold border">Kirim</button>
+                            </form>
+                        </div>
+                        <div class="bg-teal-100 p-1 shadow-sm rounded-sm">
+                            <ul class="mx-auto space-y-4 p-3 overflow-y-auto max-h-92">
+                                <li class="mx-auto pb-4 border-b space-y-2">
+                                    <div class="flex justify-between">
+                                        <p class="font-bold">Lorem, ipsum.</p>
+                                        <p class="font-extralight">Lorem, ipsum.</p>
+                                    </div>
+                                    <p class="text-left">Lorem ipsum dolor sit.</p>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="gifts" class="gifts">
+            <div class="@container mx-auto p-6 h-auto bg-teal-600">
+                <div class="mx-auto bg-teal-400 rounded-sm shadow-lg p-6 text-center space-y-2">
+                    <h1>Tanda Kasih</h1>
+                    <div class="bg-teal-200 p-6 mx-auto shadow-md">
+                        <ul class="space-y-4">
+                            <li class="mx-auto bg-teal-50 p-4 size-fit space-y-1 w-full md:w-1/2">
+                                <img class="mx-auto size-30" src="image/barcode.gif" alt="">
+                                <p>Bank A</p>
+                                <p>09027498 - ERISA RIZKYANI</p>
+                            </li>
+                            <li class="mx-auto bg-teal-50 p-4 size-fit space-y-1 w-full md:w-1/2">
+                                <img class="mx-auto size-30" src="image/barcode.gif" alt="">
+                                <p>Bank B</p>
+                                <p>07023498 - RAFDI REYHAN ZHAFARI</p>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <footer>
+            <div class="@container mx-auto p-6 h-auto bg-teal-600">
+                <div class="flex flex-col justify-center text-center text-white text-shadow-md">
+                    <small class="block ">&copy; 2025 Prasida Informatic, All Rights Reserved.</small>
+                    <small class="block">Design by <a href="#"> @prasida_informatic</a>.</small>
+                </div>
+            </div>
+        </footer>
 
         <!-- script section -->
         <!-- hero entrance scene -->
@@ -237,6 +325,21 @@
                     })
                     ticking = true
                 }
+            })
+         </script>
+
+        <!-- countdown -->
+         <script>
+            simplyCountdown("#countdown-place",{
+                year: 2026,
+                month: 7,
+                day: 2,
+                words:{
+                    days:{root: 'hari', lambda: (root, n) => n > 1 ? 'Hari' : root},
+                    hours: { root: 'jam', lambda: (root, n) => n > 1 ? 'jam' : root },
+                    minutes: { root: 'menit', lambda: (root, n) => n > 1 ? 'menit' : root },
+                    seconds: { root: 'detik', lambda: (root, n) => n > 1 ? 'detik' : root },
+                },
             })
          </script>
 
