@@ -211,19 +211,8 @@
             <div class="@container mx-auto p-6 h-auto bg-teal-600">
                 <div class="mx-auto bg-teal-400 rounded-sm shadow-lg p-6 text-center space-y-2">
                     <h1>Tanda Kasih</h1>
-                    <div class="bg-teal-200 p-6 mx-auto shadow-md">
-                        <ul class="space-y-4">
-                            <li class="mx-auto bg-teal-50 p-4 size-fit space-y-1 w-full md:w-1/2">
-                                <img class="mx-auto size-30" src="image/barcode.gif" alt="">
-                                <p>Bank A</p>
-                                <p>09027498 - ERISA RIZKYANI</p>
-                            </li>
-                            <li class="mx-auto bg-teal-50 p-4 size-fit space-y-1 w-full md:w-1/2">
-                                <img class="mx-auto size-30" src="image/barcode.gif" alt="">
-                                <p>Bank B</p>
-                                <p>07023498 - RAFDI REYHAN ZHAFARI</p>
-                            </li>
-                        </ul>
+                    <div class="bg-teal-200 p-6 mx-auto shadow-md size-fit">
+                        <ul id="gift-holder" class="space-y-4"></ul>
                     </div>
                 </div>
             </div>
@@ -249,28 +238,37 @@
         <!-- input value from json -->
          <script>
             $.getJSON('./src/data.json',function(res){
-                $.each(res,function(){
-                    // HOME
-                    $('#groom-bride-name').text(`${res.bride["sname"]} & ${res.groom["sname"]}`)
+                // HOME
+                $('#groom-bride-name').text(`${res.bride["sname"]} & ${res.groom["sname"]}`)
 
-                    $('#groom-name').text(`${res.groom['fname']}`)
-                    $('#groom-status').html(`Putra ${res.groom['status']} dari <br> ${res.groom['father']} <br> dan <br> ${res.groom['mother']}`)
-                    
-                    $('#bride-name').text(`${res.bride['fname']}`)
-                    $('#bride-status').html(`Putri ${res.bride['status']} dari <br> ${res.bride['father']} <br> dan <br> ${res.bride['mother']}`)
+                $('#groom-name').text(`${res.groom['fname']}`)
+                $('#groom-status').html(`Putra ${res.groom['status']} dari <br> ${res.groom['father']} <br> dan <br> ${res.groom['mother']}`)
+                
+                $('#bride-name').text(`${res.bride['fname']}`)
+                $('#bride-status').html(`Putri ${res.bride['status']} dari <br> ${res.bride['father']} <br> dan <br> ${res.bride['mother']}`)
 
-                    // INFO
-                    $('#akad-time').text(`${res.akad['time']}`)
-                    $('#akad-date').text(`${res.akad['date']}`)
-                    $('#akad-location-place').text(`${res.akad['place']}`)
-                    $('#akad-location-address').text(`${res.akad['address']}`)
+                // INFO
+                $('#akad-time').text(`${res.akad['time']}`)
+                $('#akad-date').text(`${res.akad['date']}`)
+                $('#akad-location-place').text(`${res.akad['place']}`)
+                $('#akad-location-address').text(`${res.akad['address']}`)
 
-                    $('#resepsi-time').text(`${res.resepsi['time']}`)
-                    $('#resepsi-date').text(`${res.resepsi['date']}`)
-                    $('#resepsi-location-place').text(`${res.resepsi['place']}`)
-                    $('#resepsi-location-address').text(`${res.resepsi['address']}`)
+                $('#resepsi-time').text(`${res.resepsi['time']}`)
+                $('#resepsi-date').text(`${res.resepsi['date']}`)
+                $('#resepsi-location-place').text(`${res.resepsi['place']}`)
+                $('#resepsi-location-address').text(`${res.resepsi['address']}`)
 
-                    $('#info-location').html(`${res['maps']}`)
+                $('#info-location').html(`${res['maps']}`)
+
+                //gift
+                $.each(res.gifts,function(key){
+                    $("#gift-holder").append(`
+                        <li id="${res.gifts[key]}" class="mx-auto bg-teal-50 p-4 size-fit space-y-1 w-full">
+                            <img class="mx-auto size-30" src="image/barcode.gif" alt="">
+                            <p>${res.gifts[key].bank}</p>
+                            <p>${res.gifts[key].recipient}</p>
+                        </li>
+                    `)
                 })
             })
          </script>
@@ -342,6 +340,5 @@
                 },
             })
          </script>
-
     </body>
 </html>

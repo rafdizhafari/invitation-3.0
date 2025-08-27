@@ -25,5 +25,19 @@
         "place":"Leviticus 11",
         "address":"Jl. Penyelesaian Tomang II No.1 Blok 11, Meruya Utara, Kec. Kembangan, Kota Jakarta Barat, Daerah Khusus Ibukota Jakarta 11620"
     },
-    "maps":"<iframe class='mx-auto border border-white border-2 rounded-sm shadow-sm w-xs md:w-2xl h-72' src='https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3966.507338899259!2d106.72208687398977!3d-6.19659379379108!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e69f72147b8a23f%3A0xf98d008933f7469f!2sLeviticus%2011!5e0!3m2!1sid!2sid!4v1756016972049!5m2!1sid!2sid' allowfullscreen='' loading='lazy' referrerpolicy='no-referrer-when-downgrade'></iframe>"
+    "maps":"<iframe class='mx-auto border border-white border-2 rounded-sm shadow-sm w-xs md:w-2xl h-72' src='https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3966.507338899259!2d106.72208687398977!3d-6.19659379379108!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e69f72147b8a23f%3A0xf98d008933f7469f!2sLeviticus%2011!5e0!3m2!1sid!2sid!4v1756016972049!5m2!1sid!2sid' allowfullscreen='' loading='lazy' referrerpolicy='no-referrer-when-downgrade'></iframe>",
+    "gifts":{
+        "1":{
+            "bank":"Bank A",
+            "recipient":"09027498 - ERISA RIZKYANI"
+        },
+        "2":{
+            "bank":"Bank B",
+            "recipient":"07023498 - RAFDI REYHAN ZHAFARI"
+        },
+        "3":{
+            "bank":"Bank C",
+            "recipient":"08023498 - RAFDI REYHAN ZHAFARI"
+        }
+    }
 }
