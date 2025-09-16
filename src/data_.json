@@ -1,14 +1,14 @@
 {
     "bride":{
-        "fname":"Bride Bride",
-        "sname":"Bride",
+        "fname":"Erisa Rizkyani",
+        "sname":"Erisa",
         "status":"Pertama",
         "mother":"Ibu Fulanah",
         "father":"Bapak Fulan"
     },
     "groom":{
-        "fname":"Groom Groom",
-        "sname":"Groom",
+        "fname":"Rafdi Reyhan Zhafari",
+        "sname":"Rafdi",
         "status":"Pertama",
         "mother":"Ibu Fulanah",
         "father":"Bapak Fulan"
@@ -29,15 +29,15 @@
     "gifts":{
         "1":{
             "bank":"Bank A",
-            "recipient":"09027498 - Bride Bride"
+            "recipient":"09027498 - ERISA RIZKYANI"
         },
         "2":{
             "bank":"Bank B",
-            "recipient":"07023498 - Groom Groom"
+            "recipient":"07023498 - RAFDI REYHAN ZHAFARI"
         },
         "3":{
             "bank":"Bank C",
-            "recipient":"08023498 - Fulan"
+            "recipient":"08023498 - RAFDI REYHAN ZHAFARI"
         }
     }
 }

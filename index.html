@@ -27,10 +27,10 @@
                 </div>
                 <div class="mx-auto justify-center text-center text-shadow-sm">
                     <p>The Wedding Celebration Of</p>
-                    <h1 id="groom-bride-name" class="font-dancing">Rafdi & Erisa</h1>
+                    <h1 id="groom-bride-name" class="font-dancing"></h1>
                 </div>
-                <div class="animate-infinite-zoom-in mx-auto border-3 border-white p-3 bg-amber-300 rounded-md shadow-md px-5">
-                    <button class="">Open Invitation</button>
+                <div id="open-invitation" class="animate-infinite-zoom-in mx-auto border-3 border-white p-3 bg-amber-300 rounded-md shadow-md px-5">
+                    <a href="#ayat" id="open-invitation-button" class="p-3 px-5" onclick="enableScroll()">Open Invitation</a>
                 </div>
             </div>
         </section>
@@ -44,7 +44,7 @@
             </div>
         </section>
 
-        <nav class="navbar fixed bottom-15 left-1/2 -translate-x-1/2 z-50">
+        <nav class="navbar hidden fixed bottom-15 left-1/2 -translate-x-1/2 z-50">
             <div class="flex flex-row justify-center mx-auto space-x-7 bg-teal-50 size-fit py-2 px-4 rounded-sm border border-teal-500">
                 <a href="#home" class="transition hover:translate-y-[-4px]">
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="size-10 lg:size-8 transition hover:translate-y-[-3px]">
@@ -160,6 +160,35 @@
             </div>
         </section>
 
+        <section id="gallery" class="gallery">
+            <div class="@container mx-auto p-6 h-auto bg-teal-600 text-center">
+                <div id="gallery-photos" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 place-item-center mx-auto bg-teal-400 p-6 gap-4 rounded-sm shadow-lg">
+                    <a href="" data-src="https://picsum.photos/id/433/1200/768" class="mx-auto">
+                        <img src="https://picsum.photos/id/433/400/533">
+                    </a>
+                    <a href="" data-src="https://picsum.photos/id/434/1200/768" class="mx-auto">
+                        <img src="https://picsum.photos/id/434/400/533">
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <section id="story" class="story">
+            <div class="@container mx-auto p-6 h-auto bg-teal-600 text-center">
+                <div id="story" class="grid place-item-center mx-auto bg-teal-400 p-6 gap-4 rounded-sm shadow-lg">
+                    <h1>OUR STORY</h1>
+                    <div id="story-1" class="flex flex-row items-center text-left bg-teal-200 p-6 mx-auto space-x-4">
+                        <img src="https://picsum.photos/id/424/400/533" class="object-cover size-40" alt="">
+                        <p class="mx-auto">Lorem ipsum dolor sit amet consectetur adipisicing elit. Nesciunt voluptates quia hic delectus adipisci aliquid vel, neque accusamus ut voluptatum?</p>
+                    </div>
+                    <div id="story-2" class="flex flex-row items-center text-left bg-teal-200 p-6 mx-auto space-x-4">
+                        <img src="https://picsum.photos/id/425/400/533" class="object-cover size-40" alt="">
+                        <p class="">Lorem ipsum dolor sit amet consectetur adipisicing elit. Nesciunt voluptates quia hic delectus adipisci aliquid vel, neque accusamus ut voluptatum?</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
         <section id="rsvp" class="rsvp">
             <div class="@container mx-auto p-6 h-auto bg-teal-600">
                 <div class="bg-teal-400 p-6 mx-auto text-center rounded-sm justify-center text-center shadow-lg space-y-2">
@@ -227,11 +256,25 @@
             </div>
         </footer>
 
+        <div id="lightbox" class="lightbox hidden">
+            <div id="lightbox-outer" class="fixed inset-0 flex items-center justify-center z-50 transition-opacity duration-300 opacity-100">
+                <div id="lightbox-inner" class="relative">
+                    <button id="lightbox-close-button" onclick="closeLightbox()" class="absolute top-2 right-2 text-white text-2xl hidden">&times;</button>
+                    <img id="lightbox-image" class="max-w-full max-h-[90vh] rounded shadow-xl" src="" alt="">
+                </div>
+            </div>
+        </div>
+
         <!-- script section -->
         <!-- hero entrance scene -->
          <script>
             $(document).ready(function(){
                 $(".hero").addClass('animate-zoom-in')
+
+                let cleanUrl = window.location.origin + window.location.pathname
+                if(window.location.href !== cleanUrl){
+                    window.location = cleanUrl
+                }
             })
          </script>
 
@@ -302,7 +345,7 @@
                 if(!ticking){
                     window.requestAnimationFrame(()=>{
                         if(!isSmallScreen){
-                            if(currentScroll>lastScroll && currentScroll > 50){
+                            if(currentScroll>lastScroll && currentScroll > 50 && scrollState == true){
                                 $(".navbar").addClass("animate-fade-out")
                                 $(".navbar").removeClass("animate-fade-in")
                             }else{
@@ -310,7 +353,7 @@
                                 $(".navbar").removeClass("animate-fade-out")
                             }
                         }else{
-                            if(currentScroll>lastScroll && currentScroll > 50){
+                            if(currentScroll>lastScroll && currentScroll > 70 && scrollState == true){
                                 $(".navbar").addClass("animate-fade-out")
                                 $(".navbar").removeClass("animate-fade-in")
                             }else{
@@ -339,6 +382,76 @@
                     seconds: { root: 'detik', lambda: (root, n) => n > 1 ? 'detik' : root },
                 },
             })
+         </script>
+
+        <!-- gallery -->
+         <script>
+            // show photo
+            $("#gallery-photos a").click(function(e){
+                e.preventDefault();
+                console.log(typeof($(this).data("src")))
+                $("#lightbox-image").attr('src',$(this).data('src')) 
+                $("#lightbox").removeClass('hidden')
+                $("#lightbox-close-button").removeClass('hidden')
+                requestAnimationFrame(()=>{
+                    $("#lightbox-outer").removeClass('opacity-0 scale-95')
+                    $("#lightbox-outer").addClass('opacity-100 scale-100')
+                })
+            })
+
+            // close photo
+            function closeLightbox(){
+                $("#lightbox-outer").addClass('opacity-0 scale-95')
+                $("#lightbox-outer").removeClass('opacity-100 scale-100')
+                setTimeout(()=>{
+                    $("#lightbox-image").attr('src',"") 
+                    $("#lightbox").addClass('hidden')
+                    $("#lightbox-close-button").addClass('hidden')
+                },300)
+            }
+            $("#lightbox-outer").on('click',function(e){
+                if(e.target === this){
+                    closeLightbox();
+                }
+            })
+         </script>
+
+        <!-- enable scroll -->
+         <script>
+            let scrollState = true;
+
+            function disableScroll(){
+                scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+                scrollLeft = window.pageXOffset || document.documentElement.scrollLeft;
+
+                window.onscroll = function(){
+                    window.scrollTo(scrollTop,scrollLeft)
+                }
+
+            $(":root").css("scroll-behavior","auto")
+            }
+
+            function enableScroll(){
+                scrollState = false
+
+                $("#open-invitation").addClass('opacity-0','scale-0','transition-all','duration-500')
+                $("#open-invitation").on("transitionend",function(){
+                    $("#open-invitation").remove()
+                },{once:true})
+
+                window.onscroll = function(){}
+
+                $(":root").css("scroll-behavior","smooth")
+
+                $(".navbar").removeClass('hidden')
+                $(".navbar").addClass('animate-fade-in')
+
+                setTimeout(()=>{
+                    scrollState = true;
+                },1600)
+            }
+
+            disableScroll()
          </script>
     </body>
 </html>

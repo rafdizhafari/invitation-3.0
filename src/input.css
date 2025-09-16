@@ -105,4 +105,8 @@
         z-index: -1;
         background-position: 49%;
     }
+    #lightbox-outer{
+        background-color: rgba(0,0,0,0.4);
+        backdrop-filter: blur(2px);
+    }
 }
